@@ -1,0 +1,368 @@
+@import 'grid.less';
+
+/* VARIABLES =================== */
+@gutter: 0;
+@columns: 16;
+
+@font: 'Roboto', sans-serif;
+@color: lightGreen;
+@black: #222222;
+
+
+/* STYLES ====================== */
+body{
+    font-family: @font;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+header{
+    padding: 30px 30px 40px 40px;
+    .logo{
+        color: @black;
+        text-decoration: none;
+        font-size: 18px;
+        position: relative;
+        padding: 10px 0;
+        float: left;
+        &:after{
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: @black;
+            height: 3px;
+        }
+    }
+    .toggle{
+        display: none;
+        width: 36px;
+        height: 22px;
+        top: 40px;
+        background: @black;
+        position: absolute;
+        right: 30px;
+        cursor: pointer;
+        &:before{
+            content:'';
+            position: absolute;
+            top: 2px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: white;
+            transition: transform 0.3s ease;
+            transform: rotate(0deg);
+        }
+        &:after{
+            content:'';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: white;
+            transition: transform 0.3s ease;
+            transform: rotate(0deg);
+        }
+    }
+    nav{
+        float: right;
+        margin: 10px 0;
+        a{
+            padding: 6px 4px;
+            margin: 4px 6px;
+            color: @black;
+            text-decoration: none;
+            text-transform: uppercase;
+            position: relative;
+            &:after{
+                content: '';
+                position: absolute;
+                left: 50%;
+                right: 50%;
+                bottom: 0;
+                height: 1px;
+                background: @black;
+                transition: all 0.3s ease;
+            }
+            &:hover, &.active{
+                &:after{
+                    left: 0%;
+                    right: 0%
+                }
+            }
+        }
+    }
+    .clear;
+}
+
+.slider{
+    width: 100%;
+    a{
+        text-decoration: none;
+        color: white;
+        display: block;
+        figure{
+            padding: 0;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            img{
+                transform: scale(1);
+                transition: all 2s ease;
+            }
+            figcaption{
+                position: absolute;
+                left: 50px;
+                bottom: 40px;
+                color: white;
+                font-size: 28px;
+                font-weight: 300;
+                opacity: 0;
+                transition: all 0.7s 0.5s ease;
+            }
+        }
+        &:hover{
+            figure img{
+                transform: scale(1.2);
+            }
+        }
+    }
+    img{
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .active figure figcaption{
+        opacity: 1;
+        bottom: 60px;
+    }
+}
+
+.grid{
+    width: 100%;
+    .project{
+        .col(8);
+        color: white;
+        text-decoration: none;
+        figure{
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            background: @black;
+            img{
+                width: 100%;
+                height: auto;
+                display: block;
+                transform: scale(1);
+                transition: all 0.7s ease;
+                opacity: 1;
+            }
+            figcaption{
+                position: absolute;
+                bottom: 40px;
+                left: 50px;
+                font-size: 30px;
+                font-weight: 300;
+                opacity: 0;
+                transition: all 0.7s ease;
+            }
+        }
+        &:hover{
+            figure{
+                img{
+                    transform: scale(1.2);
+                    opacity: 0.5;
+                }
+                figcaption{
+                    bottom: 60px;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .clear;
+}
+
+.content{
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    .intro-text{
+        padding: 40px 0;
+        text-align: center;
+        margin-bottom: 15px;
+        h2{
+            font-weight: 100;
+            font-size: 30px;
+            line-height: 40px;
+            color: @black;
+            margin: 15px 0;
+        }
+    }
+    .more{
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 14px;
+        text-decoration: none;
+        color: @black;
+        position: relative;
+        display: inline-block;
+        padding: 5px 0;
+        &:after{
+            content: '';
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            background: @black;
+            height: 2px;
+            transition: all 0.3s ease; 
+            opacity: 0;
+        }
+        &:hover:after{
+            left: 0%;
+            right: 0%;
+            opacity: 1;
+        }
+    }
+}
+
+footer{
+    background: @black;
+    padding: 50px 30px;
+    margin: 0;
+    .sitemap{
+        .col(6);
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            a{
+                text-decoration: none;
+                color: white;
+                display: inline-block;
+                text-transform: uppercase;
+                padding: 4px 0;
+                font-size: 12px;
+                transition: all 0.3s ease;
+                &:hover{
+                    color: #cccccc;
+                }
+            }
+        }
+    }
+    .end{
+        .col(10);
+        text-align: right;
+        menu{
+            margin: 58px 0 0 0;
+            padding: 0;
+            a{
+                text-decoration: none;
+                color: white;
+                display: inline-block;
+                text-transform: uppercase;
+                padding: 8px 0 8px 16px;
+                font-size: 12px;
+                transition: all 0.3s ease;
+                &:hover{
+                    color: #cccccc;
+                }
+            }
+        }
+    }
+    .copy{
+        color: #888888;
+        font-weight: 300;
+        a{
+            text-decoration: none;
+            color: #888888;
+            transition: all 0.3s ease;
+            &:hover{
+                color: #aaaaaa;
+            }
+        }
+    }
+    .clear;
+}
+
+/* MEDIA QUERY'S =============== */
+@media only screen and (min-width: 1300px) {
+    .grid{
+        .project{
+            .col(5.333333);
+        }
+    }
+}
+@media only screen and (max-width: 720px) {
+    header{
+        .toggle{
+            display: block;
+            z-index: 999999;
+            &.open{
+                background: rgba(255,255,255,0);
+                &:after{
+                    background: @black;
+                    height: 2px;
+                    transform: rotate(40deg);
+                    transform-origin: center;
+                    top: 10px;
+                }
+                &:before{
+                    background: @black;
+                    height: 2px;
+                    transform: rotate(-40deg);
+                    transform-origin: center;
+                    top: 10px;
+                }
+            }
+        }
+        nav{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            text-align: center;
+            background: white;
+            background: rgba(255,255,255,0.9);
+            padding-top: 80px;
+            a{
+                display: block;
+                font-size: 16px;
+                &:after{
+                    display: none;
+                }
+            }
+        }
+    }
+    footer{
+        .sitemap{
+            display: none;
+        }
+        .end{
+            .col(16);
+            text-align: center;
+            menu{
+                margin: 0 0 5px 0;
+                a{
+                    padding: 4px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    .grid{
+        .project{
+            .col(16);
+        }
+    }
+}
