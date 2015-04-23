@@ -1,7 +1,7 @@
 @import 'grid.less';
 
 /* VARIABLES =================== */
-@gutter: 0;
+@gutter: 2%;
 @columns: 16;
 
 @font: 'Roboto', sans-serif;
@@ -141,10 +141,57 @@ header{
     }
 }
 
+.project-slider{
+    figure{
+        margin: 0;
+        padding: 0;
+    }
+    .owl-controls{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        .owl-nav{
+            .owl-prev{
+                pointer-events: auto;
+                position: absolute;
+                top: 50%;
+                font-size: 100px;
+                line-height: 100px;
+                margin-top: -50px;
+                left: 10px;
+                font-weight: 100;
+                opacity: 1;
+                transition: all 0.3s ease;
+            }
+            .owl-next{
+                pointer-events: auto;
+                position: absolute;
+                top: 50%;
+                font-size: 100px;
+                line-height: 100px;
+                margin-top: -50px;
+                right: 10px;
+                font-weight: 100;
+                opacity: 0;
+                opacity: 1;
+                transition: all 0.3s ease;
+            }
+            .disabled{
+                opacity: 0;
+            }
+        }
+    }
+}
+
 .grid{
     width: 100%;
     .project{
-        .col(8);
+        width: 50%;
+        float: left;
+        display: inline;
         color: white;
         text-decoration: none;
         figure{
@@ -229,6 +276,88 @@ header{
             opacity: 1;
         }
     }
+    .main{
+        .col(10.666666);
+        margin-bottom: 40px;
+    }
+    .side{
+        .col(5.333333);
+        text-align: center;
+        border-top: 1px solid @black;
+        margin: 20px 0 40px;
+        padding-top: 15px;
+        .link{
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+            color: @black;
+            position: relative;
+            display: inline-block;
+            padding: 5px 0;
+            &:after{
+                content: '';
+                position: absolute;
+                left: 50%;
+                right: 50%;
+                bottom: 0;
+                background: @black;
+                height: 2px;
+                transition: all 0.3s ease; 
+                opacity: 0;
+            }
+            &:hover:after{
+                left: 0%;
+                right: 0%;
+                opacity: 1;
+            }
+        }
+        menu{
+            border-top: 1px solid @black;
+            padding: 0;
+            margin: 0;
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+            a{
+                display: table-cell;
+                padding: 10px;
+                color: lighten(@black, 40%);
+                font-weight: 100;
+                text-decoration: none;
+                text-transform: uppercase;
+                &:first-child{
+                    &:before{
+                        content: '\2039';
+                        font-size: 24px;
+                        position: relative;
+                        top: 1px;
+                        margin-right: 10px;
+                        left: 0;
+                        transition: all 0.3s ease;
+                    }
+                    &:hover:before{
+                        left: -20px;
+                    }
+                }
+                &:last-child{
+                    &:after{
+                        content: '\203A';
+                        font-size: 24px;
+                        position: relative;
+                        top: 1px;
+                        margin-left: 10px;
+                        right: 0;
+                        transition: all 0.3s ease;
+                    }
+                    &:hover:after{
+                        right: -20px;
+                    }
+                }
+            }
+        }
+    }
+    .clear;
 }
 
 footer{
@@ -294,7 +423,7 @@ footer{
 @media only screen and (min-width: 1300px) {
     .grid{
         .project{
-            .col(5.333333);
+            width: 33.333333%;
         }
     }
 }
@@ -333,6 +462,7 @@ footer{
             background: white;
             background: rgba(255,255,255,0.9);
             padding-top: 80px;
+            margin: 0;
             a{
                 display: block;
                 font-size: 16px;
@@ -340,6 +470,11 @@ footer{
                     display: none;
                 }
             }
+        }
+    }
+    .content{
+        .side, .main{
+            .col(16);
         }
     }
     footer{
@@ -362,7 +497,7 @@ footer{
 @media only screen and (max-width: 600px) {
     .grid{
         .project{
-            .col(16);
+            width: 100%;
         }
     }
 }

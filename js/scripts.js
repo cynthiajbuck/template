@@ -11,7 +11,7 @@
         autoplaySpeed: 1000,
         autoplayHoverPause: true,
         dots: false,
-        controls: false,
+        nav: false,
         loop: true,
         responsive: {
             0:{
@@ -21,6 +21,16 @@
                 items: 2
             }
         }
+    });
+    
+    //PROJECT-SLIDER
+    $('.project-slider').owlCarousel({
+        items: 1,
+        dots: false,
+        nav: true,
+        loop: false,
+        navText: '‹›',
+        navRewind: false
     });
 }(jQuery));
 
