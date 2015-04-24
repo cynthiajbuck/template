@@ -32,6 +32,13 @@
         navText: '‹›',
         navRewind: false
     });
+    
+    //ABOUT-SLIDER
+    $('.about-slider').owlCarousel({
+        items: 3,
+        dots: false,
+        nav: false
+    });
 }(jQuery));
 
 
