@@ -39,6 +39,17 @@
         dots: false,
         nav: false
     });
+    
+    //MASONRY
+    var $container = $('.news').masonry();
+    $container.imagesLoaded( function() {
+        $container.masonry({
+            columnWidth: ".grid-sizer",
+            itemSelector: ".news-item",
+            gutter: ".gutter-sizer",
+            percentPosition: true
+        });
+    });
 }(jQuery));
 
 
