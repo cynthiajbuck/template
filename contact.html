@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie8"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="nl-BE"><!--<![endif]-->
+<head>
+    <!-- ============= Global Metas ============= -->
+	<meta charset="utf-8">
+	<title>Acme Studio</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    
+    <!-- ============= CSS ============= -->
+	<link rel="stylesheet" href="styles/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,100' rel='stylesheet' type='text/css'>
+    
+    <!-- ============= Fix ============= -->
+	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    
+    <!-- ============= Favicons ============= -->
+	<link rel="icon" type="image/png" href="images/favicons/favicon.png" />
+    <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="images/favicons/favicon.ico"><![endif]-->
+    <link rel="apple-touch-icon" href="images/favicons/apple-touch-icon.png" />
+    <meta name="msapplication-TileColor" content="#111111" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">Acme Studio</a>
+            <div class="toggle"></div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="news.html">News</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+        </header>
+        <div class="map" id="map"></div>
+        
+        <div class="contact">
+            <article>
+                <h3>Contact info</h3>
+                <p>
+                    +1-202-555-0107<br>
+                    <a href="mailto:info@acmestudio.com">info@acmestudio.com</a>
+                </p>
+                <p>
+                    103 Prince Street<br>
+                    New York, NY 10012<br>
+                    United States
+                </p>
+            </article>
+            <form>
+                <div class="name"><input type="text" placeholder="Name"></div>
+                <div class="surname"><input type="text" placeholder="Surname"></div>
+                <input type="email" placeholder="Email address">
+                <input type="text" placeholder="Subject">
+                <textarea placeholder="Message"></textarea>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <footer>
+            <div class="sitemap">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="end">
+                <menu>
+                    <a href="http://facebook.com">Facebook</a>
+                    <a href="http://twitter.com">twitter</a>
+                    <a href="http://linkedin.com">LinkedIn</a>
+                    <a href="http://instagram.com">Instagram</a>
+                </menu>
+                <div class="copy">
+                    &copy; ACME STUDIO - 2015<br />
+                    website by <a href="http://www.tijngoessaert.be/" target="_blank">TIJN</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- ============= JS ============= -->
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>  
+	<script src="js/min/plugins.min.js" type="text/javascript"></script>
+	<script src="js/min/scripts.min.js" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+	<script>
+		var map;
+		function initialize() {
+			var acme = new google.maps.LatLng(40.725080, -73.999062);
+			var mapOptions = {
+				zoom: 13,
+				scrollwheel: false,
+				disableDefaultUI: true,
+				center: acme,
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				draggable: false,
+                styles: [{"stylers":[{"visibility":"on"},{"saturation":-100},{"gamma":0.54}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"color":"#4d4946"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"gamma":0.48}]},{"featureType":"transit.station","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"gamma":7.18}]}]
+			};
+			map = new google.maps.Map(document.getElementById('map'),mapOptions);
+			var marker = new google.maps.Marker({
+				position: acme,
+				map: map,
+				title: 'ACME Studio'
+			});
+		}
+		google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+</body>
+</html>

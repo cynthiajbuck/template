@@ -16,3 +16,586 @@
  * MIT License
  */
 (function(){function e(){}function t(e,t){for(var n=e.length;n--;)if(e[n].listener===t)return n;return-1}function n(e){return function(){return this[e].apply(this,arguments)}}var i=e.prototype,r=this,o=r.EventEmitter;i.getListeners=function(e){var t,n,i=this._getEvents();if("object"==typeof e){t={};for(n in i)i.hasOwnProperty(n)&&e.test(n)&&(t[n]=i[n])}else t=i[e]||(i[e]=[]);return t},i.flattenListeners=function(e){var t,n=[];for(t=0;e.length>t;t+=1)n.push(e[t].listener);return n},i.getListenersAsObject=function(e){var t,n=this.getListeners(e);return n instanceof Array&&(t={},t[e]=n),t||n},i.addListener=function(e,n){var i,r=this.getListenersAsObject(e),o="object"==typeof n;for(i in r)r.hasOwnProperty(i)&&-1===t(r[i],n)&&r[i].push(o?n:{listener:n,once:!1});return this},i.on=n("addListener"),i.addOnceListener=function(e,t){return this.addListener(e,{listener:t,once:!0})},i.once=n("addOnceListener"),i.defineEvent=function(e){return this.getListeners(e),this},i.defineEvents=function(e){for(var t=0;e.length>t;t+=1)this.defineEvent(e[t]);return this},i.removeListener=function(e,n){var i,r,o=this.getListenersAsObject(e);for(r in o)o.hasOwnProperty(r)&&(i=t(o[r],n),-1!==i&&o[r].splice(i,1));return this},i.off=n("removeListener"),i.addListeners=function(e,t){return this.manipulateListeners(!1,e,t)},i.removeListeners=function(e,t){return this.manipulateListeners(!0,e,t)},i.manipulateListeners=function(e,t,n){var i,r,o=e?this.removeListener:this.addListener,s=e?this.removeListeners:this.addListeners;if("object"!=typeof t||t instanceof RegExp)for(i=n.length;i--;)o.call(this,t,n[i]);else for(i in t)t.hasOwnProperty(i)&&(r=t[i])&&("function"==typeof r?o.call(this,i,r):s.call(this,i,r));return this},i.removeEvent=function(e){var t,n=typeof e,i=this._getEvents();if("string"===n)delete i[e];else if("object"===n)for(t in i)i.hasOwnProperty(t)&&e.test(t)&&delete i[t];else delete this._events;return this},i.removeAllListeners=n("removeEvent"),i.emitEvent=function(e,t){var n,i,r,o,s=this.getListenersAsObject(e);for(r in s)if(s.hasOwnProperty(r))for(i=s[r].length;i--;)n=s[r][i],n.once===!0&&this.removeListener(e,n.listener),o=n.listener.apply(this,t||[]),o===this._getOnceReturnValue()&&this.removeListener(e,n.listener);return this},i.trigger=n("emitEvent"),i.emit=function(e){var t=Array.prototype.slice.call(arguments,1);return this.emitEvent(e,t)},i.setOnceReturnValue=function(e){return this._onceReturnValue=e,this},i._getOnceReturnValue=function(){return this.hasOwnProperty("_onceReturnValue")?this._onceReturnValue:!0},i._getEvents=function(){return this._events||(this._events={})},e.noConflict=function(){return r.EventEmitter=o,e},"function"==typeof define&&define.amd?define("eventEmitter/EventEmitter",[],function(){return e}):"object"==typeof module&&module.exports?module.exports=e:this.EventEmitter=e}).call(this),function(e){function t(t){var n=e.event;return n.target=n.target||n.srcElement||t,n}var n=document.documentElement,i=function(){};n.addEventListener?i=function(e,t,n){e.addEventListener(t,n,!1)}:n.attachEvent&&(i=function(e,n,i){e[n+i]=i.handleEvent?function(){var n=t(e);i.handleEvent.call(i,n)}:function(){var n=t(e);i.call(e,n)},e.attachEvent("on"+n,e[n+i])});var r=function(){};n.removeEventListener?r=function(e,t,n){e.removeEventListener(t,n,!1)}:n.detachEvent&&(r=function(e,t,n){e.detachEvent("on"+t,e[t+n]);try{delete e[t+n]}catch(i){e[t+n]=void 0}});var o={bind:i,unbind:r};"function"==typeof define&&define.amd?define("eventie/eventie",o):e.eventie=o}(this),function(e,t){"function"==typeof define&&define.amd?define(["eventEmitter/EventEmitter","eventie/eventie"],function(n,i){return t(e,n,i)}):"object"==typeof exports?module.exports=t(e,require("wolfy87-eventemitter"),require("eventie")):e.imagesLoaded=t(e,e.EventEmitter,e.eventie)}(window,function(e,t,n){function i(e,t){for(var n in t)e[n]=t[n];return e}function r(e){return"[object Array]"===d.call(e)}function o(e){var t=[];if(r(e))t=e;else if("number"==typeof e.length)for(var n=0,i=e.length;i>n;n++)t.push(e[n]);else t.push(e);return t}function s(e,t,n){if(!(this instanceof s))return new s(e,t);"string"==typeof e&&(e=document.querySelectorAll(e)),this.elements=o(e),this.options=i({},this.options),"function"==typeof t?n=t:i(this.options,t),n&&this.on("always",n),this.getImages(),a&&(this.jqDeferred=new a.Deferred);var r=this;setTimeout(function(){r.check()})}function f(e){this.img=e}function c(e){this.src=e,v[e]=this}var a=e.jQuery,u=e.console,h=u!==void 0,d=Object.prototype.toString;s.prototype=new t,s.prototype.options={},s.prototype.getImages=function(){this.images=[];for(var e=0,t=this.elements.length;t>e;e++){var n=this.elements[e];"IMG"===n.nodeName&&this.addImage(n);var i=n.nodeType;if(i&&(1===i||9===i||11===i))for(var r=n.querySelectorAll("img"),o=0,s=r.length;s>o;o++){var f=r[o];this.addImage(f)}}},s.prototype.addImage=function(e){var t=new f(e);this.images.push(t)},s.prototype.check=function(){function e(e,r){return t.options.debug&&h&&u.log("confirm",e,r),t.progress(e),n++,n===i&&t.complete(),!0}var t=this,n=0,i=this.images.length;if(this.hasAnyBroken=!1,!i)return this.complete(),void 0;for(var r=0;i>r;r++){var o=this.images[r];o.on("confirm",e),o.check()}},s.prototype.progress=function(e){this.hasAnyBroken=this.hasAnyBroken||!e.isLoaded;var t=this;setTimeout(function(){t.emit("progress",t,e),t.jqDeferred&&t.jqDeferred.notify&&t.jqDeferred.notify(t,e)})},s.prototype.complete=function(){var e=this.hasAnyBroken?"fail":"done";this.isComplete=!0;var t=this;setTimeout(function(){if(t.emit(e,t),t.emit("always",t),t.jqDeferred){var n=t.hasAnyBroken?"reject":"resolve";t.jqDeferred[n](t)}})},a&&(a.fn.imagesLoaded=function(e,t){var n=new s(this,e,t);return n.jqDeferred.promise(a(this))}),f.prototype=new t,f.prototype.check=function(){var e=v[this.img.src]||new c(this.img.src);if(e.isConfirmed)return this.confirm(e.isLoaded,"cached was confirmed"),void 0;if(this.img.complete&&void 0!==this.img.naturalWidth)return this.confirm(0!==this.img.naturalWidth,"naturalWidth"),void 0;var t=this;e.on("confirm",function(e,n){return t.confirm(e.isLoaded,n),!0}),e.check()},f.prototype.confirm=function(e,t){this.isLoaded=e,this.emit("confirm",this,t)};var v={};return c.prototype=new t,c.prototype.check=function(){if(!this.isChecked){var e=new Image;n.bind(e,"load",this),n.bind(e,"error",this),e.src=this.src,this.isChecked=!0}},c.prototype.handleEvent=function(e){var t="on"+e.type;this[t]&&this[t](e)},c.prototype.onload=function(e){this.confirm(!0,"onload"),this.unbindProxyEvents(e)},c.prototype.onerror=function(e){this.confirm(!1,"onerror"),this.unbindProxyEvents(e)},c.prototype.confirm=function(e,t){this.isConfirmed=!0,this.isLoaded=e,this.emit("confirm",this,t)},c.prototype.unbindProxyEvents=function(e){n.unbind(e.target,"load",this),n.unbind(e.target,"error",this)},s});
+
+/**
+ * smoothState.js is a jQuery plugin to stop page load jank.
+ *
+ * This jQuery plugin progressively enhances page loads to 
+ * behave more like a single-page application.
+ *
+ * @author  Miguel Ángel Pérez   reachme@miguel-perez.com
+ * @see     https://github.com/miguel-perez/jquery.smoothState.js
+ * 
+ */
+;(function ( $, window, document, undefined ) {
+    "use strict";
+
+    /** Abort plugin if browser does not suppost pushState */
+    if(!history.pushState) {
+        // setup a dummy fn, but don't intercept on link clicks
+        $.fn.smoothState = function() { return this; };
+        $.fn.smoothState.options = {};
+        return;
+    }
+
+    /** Abort if smoothstate is already present **/
+    if($.fn.smoothState) { return; }
+
+    var
+        /** Used later to scroll page to the top */
+        $body       = $("html, body"),
+        
+        /** Used in development mode to console out useful warnings */
+        consl       = (window.console || false),
+        
+        /** Plugin default options, will be exposed as $fn.smoothState.options */
+        defaults    = {
+
+            /** jquery element string to specify which anchors smoothstate should bind to */
+            anchors : "a",
+
+            /** If set to true, smoothState will prefetch a link's contents on hover */
+            prefetch : false,
+            
+            /** A selecor that deinfes with links should be ignored by smoothState */
+            blacklist : ".no-smoothstate, [target]",
+            
+            /** If set to true, smoothState will log useful debug information instead of aborting */
+            development : false,
+            
+            /** The number of pages smoothState will try to store in memory and not request again */
+            pageCacheSize : 0,
+            
+            /** A function that can be used to alter urls before they are used to request content */
+            alterRequestUrl : function (url) {
+                return url;
+            },
+            
+            /** Run when a link has been activated */
+            onStart : {
+                duration: 0,
+                render: function (url, $container) {
+                    $body.scrollTop(0);
+                }
+            },
+
+            /** Run if the page request is still pending and onStart has finished animating */
+            onProgress : {
+                duration: 0,
+                render: function (url, $container) {
+                    $body.css("cursor", "wait");
+                    $body.find("a").css("cursor", "wait");
+                }
+            },
+
+            /** Run when requested content is ready to be injected into the page  */
+            onEnd : {
+                duration: 0,
+                render: function (url, $container, $content) {
+                    $body.css("cursor", "auto");
+                    $body.find("a").css("cursor", "auto");
+                    $container.html($content);
+                }
+            },
+
+            /** Run when content has been injected and all animations are complete  */
+            callback : function(url, $container, $content) {
+
+            }
+        },
+        
+        /** Utility functions that are decoupled from SmoothState */
+        utility     = {
+
+            /**
+             * Checks to see if the url is external
+             * @param   {string}    url - url being evaluated
+             * @see     http://stackoverflow.com/questions/6238351/fastest-way-to-detect-external-urls
+             * 
+             */
+            isExternal: function (url) {
+                var match = url.match(/^([^:\/?#]+:)?(?:\/\/([^\/?#]*))?([^?#]+)?(\?[^#]*)?(#.*)?/);
+                if (typeof match[1] === "string" && match[1].length > 0 && match[1].toLowerCase() !== window.location.protocol) {
+                    return true;
+                }
+                if (typeof match[2] === "string" && match[2].length > 0 && match[2].replace(new RegExp(":(" + {"http:": 80, "https:": 443}[window.location.protocol] + ")?$"), "") !== window.location.host) {
+                    return true;
+                }
+                return false;
+            },
+
+            /**
+             * Checks to see if the url is an internal hash
+             * @param   {string}    url - url being evaluated
+             * 
+             */
+            isHash: function (url) {
+                var hasPathname = (url.indexOf(window.location.pathname) > 0) ? true : false,
+                    hasHash = (url.indexOf("#") > 0) ? true : false;
+                return (hasPathname && hasHash) ? true : false;
+            },
+
+            /**
+             * Checks to see if we should be loading this URL
+             * @param   {string}    url - url being evaluated
+             * @param   {string}    blacklist - jquery selector
+             * 
+             */
+            shouldLoad: function ($anchor, blacklist) {
+                var url = $anchor.prop("href");
+                // URL will only be loaded if it"s not an external link, hash, or blacklisted
+                return (!utility.isExternal(url) && !utility.isHash(url) && !$anchor.is(blacklist));
+            },
+
+            /**
+             * Prevents jQuery from stripping elements from $(html)
+             * @param   {string}    url - url being evaluated
+             * @author  Ben Alman   http://benalman.com/
+             * @see     https://gist.github.com/cowboy/742952
+             * 
+             */
+            htmlDoc: function (html) {
+                var parent,
+                    elems       = $(),
+                    matchTag    = /<(\/?)(html|head|body|title|base|meta)(\s+[^>]*)?>/ig,
+                    prefix      = "ss" + Math.round(Math.random() * 100000),
+                    htmlParsed  = html.replace(matchTag, function(tag, slash, name, attrs) {
+                        var obj = {};
+                        if (!slash) {
+                            $.merge(elems, $("<" + name + "/>"));
+                            if (attrs) {
+                                $.each($("<div" + attrs + "/>")[0].attributes, function(i, attr) {
+                                    obj[attr.name] = attr.value;
+                                });
+                            }
+                            elems.eq(-1).attr(obj);
+                        }
+                        return "<" + slash + "div" + (slash ? "" : " id='" + prefix + (elems.length - 1) + "'") + ">";
+                    });
+
+                // If no placeholder elements were necessary, just return normal
+                // jQuery-parsed HTML.
+                if (!elems.length) {
+                    return $(html);
+                }
+                // Create parent node if it hasn't been created yet.
+                if (!parent) {
+                    parent = $("<div/>");
+                }
+                // Create the parent node and append the parsed, place-held HTML.
+                parent.html(htmlParsed);
+                
+                // Replace each placeholder element with its intended element.
+                $.each(elems, function(i) {
+                    var elem = parent.find("#" + prefix + i).before(elems[i]);
+                    elems.eq(i).html(elem.contents());
+                    elem.remove();
+                });
+
+                return parent.children().unwrap();
+            },
+
+            /**
+             * Resets an object if it has too many properties
+             *
+             * This is used to clear the "cache" object that stores
+             * all of the html. This would prevent the client from
+             * running out of memory and allow the user to hit the 
+             * server for a fresh copy of the content.
+             *
+             * @param   {object}    obj
+             * @param   {number}    cap
+             * 
+             */
+            clearIfOverCapacity: function (obj, cap) {
+                // Polyfill Object.keys if it doesn't exist
+                if (!Object.keys) {
+                    Object.keys = function (obj) {
+                        var keys = [],
+                            k;
+                        for (k in obj) {
+                            if (Object.prototype.hasOwnProperty.call(obj, k)) {
+                                keys.push(k);
+                            }
+                        }
+                        return keys;
+                    };
+                }
+
+                if (Object.keys(obj).length > cap) {
+                    obj = {};
+                }
+
+                return obj;
+            },
+
+            /**
+             * Finds the inner content of an element, by an ID, from a jQuery object
+             * @param   {string}    id
+             * @param   {object}    $html
+             * 
+             */
+            getContentById: function (id, $html) {
+                $html = ($html instanceof jQuery) ? $html : utility.htmlDoc($html);
+                var $insideElem         = $html.find(id),
+                    updatedContainer    = ($insideElem.length) ? $.trim($insideElem.html()) : $html.filter(id).html(),
+                    newContent          = (updatedContainer.length) ? $(updatedContainer) : null;
+                return newContent;
+            },
+
+            /**
+             * Stores html content as jquery object in given object
+             * @param   {object}    object - object contents will be stored into
+             * @param   {string}    url - url to be used as the prop
+             * @param   {jquery}    html - contents to store
+             * 
+             */
+            storePageIn: function (object, url, $html) {
+                $html = ($html instanceof jQuery) ? $html : utility.htmlDoc($html);
+                object[url] = { // Content is indexed by the url
+                    status: "loaded",
+                    title: $html.find("title").text(), // Stores the title of the page
+                    html: $html // Stores the contents of the page
+                };
+                return object;
+            },
+
+            /**
+             * Triggers an "allanimationend" event when all animations are complete
+             * @param   {object}    $element - jQuery object that should trigger event
+             * @param   {string}    resetOn - which other events to trigger allanimationend on
+             * 
+             */
+            triggerAllAnimationEndEvent: function ($element, resetOn) {
+
+                resetOn = " " + resetOn || "";
+
+                var animationCount      = 0,
+                    animationstart      = "animationstart webkitAnimationStart oanimationstart MSAnimationStart",
+                    animationend        = "animationend webkitAnimationEnd oanimationend MSAnimationEnd",
+                    eventname           = "allanimationend",
+                    onAnimationStart    = function (e) {
+                        if ($(e.delegateTarget).is($element)) {
+                            e.stopPropagation();
+                            animationCount ++;
+                        }
+                    },
+                    onAnimationEnd      = function (e) {
+                        if ($(e.delegateTarget).is($element)) {
+                            e.stopPropagation();
+                            animationCount --;
+                            if(animationCount === 0) {
+                                $element.trigger(eventname);
+                            }
+                        }
+                    };
+
+                $element.on(animationstart, onAnimationStart);
+                $element.on(animationend, onAnimationEnd);
+
+                $element.on("allanimationend" + resetOn, function(){
+                    animationCount = 0;
+                    utility.redraw($element);
+                });
+            },
+
+            /** Forces browser to redraw elements */
+            redraw: function ($element) {
+                $element.height();
+                //setTimeout(function(){$element.height("100%");}, 0);
+            }
+        }, // eo utility
+
+        /** Handles the popstate event, like when the user hits "back" */
+        onPopState = function ( e ) {
+            if(e.state !== null) {
+                var url     = window.location.href,
+                    $page   = $("#" + e.state.id),
+                    page    = $page.data("smoothState");
+                
+                if(page.href !== url && !utility.isHash(url)) {
+                    page.load(url, true);
+                }
+            }
+        },
+
+        /** Constructor function */
+        SmoothState = function ( element, options ) {
+            var
+                /** Container element smoothState is run on */
+                $container  = $(element),
+                
+                /** Variable that stores pages after they are requested */
+                cache       = {},
+                
+                /** Url of the content that is currently displayed */
+                currentHref = window.location.href,
+
+                /**
+                 * Loads the contents of a url into our container 
+                 *
+                 * @param   {string}    url
+                 * @param   {bool}      isPopped - used to determine if whe should
+                 *                      add a new item into the history object
+                 * 
+                 */
+                load = function (url, isPopped) {
+                    
+                    /** Makes this an optional variable by setting a default */
+                    isPopped = isPopped || false;
+
+                    var
+                        /** Used to check if the onProgress function has been run */
+                        hasRunCallback  = false,
+
+                        callbBackEnded  = false,
+                        
+                        /** List of responses for the states of the page request */
+                        responses       = {
+
+                            /** Page is ready, update the content */
+                            loaded: function() {
+                                var eventName = hasRunCallback ? "ss.onProgressEnd" : "ss.onStartEnd";
+
+                                if(!callbBackEnded || !hasRunCallback) {
+                                    $container.one(eventName, function(){
+                                        updateContent(url);
+                                    });
+                                } else if(callbBackEnded) {
+                                    updateContent(url);
+                                }
+
+                                if(!isPopped) {
+                                    window.history.pushState({ id: $container.prop("id") }, cache[url].title, url);
+                                }
+                            },
+
+                            /** Loading, wait 10 ms and check again */
+                            fetching: function() {
+                                
+                                if(!hasRunCallback) {
+                                    
+                                    hasRunCallback = true;
+                                    
+                                    // Run the onProgress callback and set trigger
+                                    $container.one("ss.onStartEnd", function(){
+                                        options.onProgress.render(url, $container, null);
+                                        
+                                        setTimeout(function(){
+                                            $container.trigger("ss.onProgressEnd");
+                                            callbBackEnded = true;
+                                        }, options.onStart.duration);
+                                    
+                                    });
+                                }
+                                
+                                setTimeout(function () {
+                                    // Might of been canceled, better check!
+                                    if(cache.hasOwnProperty(url)){
+                                        responses[cache[url].status]();
+                                    }
+                                }, 10);
+                            },
+
+                            /** Error, abort and redirect */
+                            error: function(){
+                                window.location = url;
+                            }
+                        };
+                    
+                    if (!cache.hasOwnProperty(url)) {
+                        fetch(url);
+                    }
+                    
+                    // Run the onStart callback and set trigger
+                    options.onStart.render(url, $container, null);
+                    setTimeout(function(){
+                        $container.trigger("ss.onStartEnd");
+                    }, options.onStart.duration);
+
+                    // Start checking for the status of content
+                    responses[cache[url].status]();
+
+                },
+
+                /** Updates the contents from cache[url] */
+                updateContent = function (url) {
+                    // If the content has been requested and is done:
+                    var containerId = "#" + $container.prop("id"),
+                        $content    = cache[url] ? utility.getContentById(containerId, cache[url].html) : null;
+
+                    if($content) {
+                        document.title = cache[url].title;
+                        $container.data("smoothState").href = url;
+                        
+                        // Call the onEnd callback and set trigger
+                        options.onEnd.render(url, $container, $content);
+
+                        $container.one("ss.onEndEnd", function(){
+                            options.callback(url, $container, $content);
+                        });
+
+                        setTimeout(function(){
+                            $container.trigger("ss.onEndEnd");
+                        }, options.onEnd.duration);
+
+                    } else if (!$content && options.development && consl) {
+                        // Throw warning to help debug in development mode
+                        consl.warn("No element with an id of " + containerId + " in response from " + url + " in " + cache);
+                    } else {
+                        // No content availble to update with, aborting...
+                        window.location = url;
+                    }
+                },
+
+                /**
+                 * Fetches the contents of a url and stores it in the "cache" varible
+                 * @param   {string}    url
+                 * 
+                 */
+                fetch = function (url) {
+
+                    // Don't fetch we have the content already
+                    if(cache.hasOwnProperty(url)) {
+                        return;
+                    }
+
+                    cache = utility.clearIfOverCapacity(cache, options.pageCacheSize);
+                    
+                    cache[url] = { status: "fetching" };
+
+                    var requestUrl  = options.alterRequestUrl(url) || url,
+                        request     = $.ajax(requestUrl);
+
+                    // Store contents in cache variable if successful
+                    request.success(function (html) {
+                        // Clear cache varible if it"s getting too big
+                        utility.storePageIn(cache, url, html);
+                        $container.data("smoothState").cache = cache;
+                    });
+
+                    // Mark as error
+                    request.error(function () {
+                        cache[url].status = "error";
+                    });
+                },
+                /**
+                 * Binds to the hover event of a link, used for prefetching content
+                 *
+                 * @param   {object}    event
+                 * 
+                 */
+                hoverAnchor = function (event) {
+                    var $anchor = $(event.currentTarget),
+                        url     = $anchor.prop("href");
+                    if (utility.shouldLoad($anchor, options.blacklist)) {
+                        event.stopPropagation();
+                        fetch(url);
+                    }
+                },
+
+                /**
+                 * Binds to the click event of a link, used to show the content
+                 *
+                 * @param   {object}    event
+                 * 
+                 */
+                clickAnchor = function (event) {
+                    var $anchor     = $(event.currentTarget),
+                        url         = $anchor.prop("href");
+
+                    // Ctrl (or Cmd) + click must open a new tab
+                    if (!event.metaKey && !event.ctrlKey && utility.shouldLoad($anchor, options.blacklist)) {
+                        // stopPropagation so that event doesn't fire on parent containers.
+                        event.stopPropagation();
+                        event.preventDefault();
+                        load(url);
+                    }
+                },
+
+                /**
+                 * Binds all events and inits functionality
+                 *
+                 * @param   {object}    event
+                 * 
+                 */
+                bindEventHandlers = function ($element) {
+                    //@todo: Handle form submissions
+                    $element.on("click", options.anchors, clickAnchor);
+
+                    if (options.prefetch) {
+                        $element.on("mouseover touchstart", options.anchors, hoverAnchor);
+                    }
+
+                },
+
+                /** Used to restart css animations with a class */
+                toggleAnimationClass = function (classname) {
+                    var classes = $container.addClass(classname).prop("class");
+                    
+                    $container.removeClass(classes);
+                    
+                    setTimeout(function(){
+                        $container.addClass(classes);
+                    },0);
+
+                    $container.one("ss.onStartEnd ss.onProgressEnd ss.onEndEnd", function(){
+                        $container.removeClass(classname);
+                    });
+                    
+                };
+
+            /** Merge defaults and global options into current configuration */
+            options = $.extend( {}, $.fn.smoothState.options, options );
+
+            /** Sets a default state */
+            if(window.history.state === null) {
+                window.history.replaceState({ id: $container.prop("id") }, document.title, currentHref);
+            }
+
+            /** Stores the current page in cache variable */
+            utility.storePageIn(cache, currentHref, document.documentElement.outerHTML);
+
+            /** Bind all of the event handlers on the container, not anchors */
+            utility.triggerAllAnimationEndEvent($container, "ss.onStartEnd ss.onProgressEnd ss.onEndEnd");
+
+            /** Bind all of the event handlers on the container, not anchors */
+            bindEventHandlers($container);
+
+            /** Public methods */
+            return {
+                href: currentHref,
+                cache: cache,
+                load: load,
+                fetch: fetch,
+                toggleAnimationClass: toggleAnimationClass
+            };
+        },
+
+        /** Returns elements with SmoothState attached to it */
+        declareSmoothState = function ( options ) {
+            return this.each(function () {
+                // Checks to make sure the smoothState element has an id and isn't already bound
+                if(this.id && !$.data(this, "smoothState")) {
+                    // Makes public methods available via $("element").data("smoothState");
+                    $.data(this, "smoothState", new SmoothState(this, options));
+                } else if (!this.id && consl) {
+                    // Throw warning if in development mode
+                    consl.warn("Every smoothState container needs an id but the following one does not have one:", this);
+                }
+            });
+        };
+
+    /** Sets the popstate function */
+    window.onpopstate = onPopState;
+
+    /** Makes utility functions public for unit tests */
+    $.smoothStateUtility = utility;
+
+    /** Defines the smoothState plugin */
+    $.fn.smoothState = declareSmoothState;
+
+    /* expose the default options */
+    $.fn.smoothState.options = defaults;
+
+})(jQuery, window, document);

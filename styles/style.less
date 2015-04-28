@@ -541,6 +541,104 @@ header{
     }
 }
 
+.map{
+    height: 400px;
+    width: 100%;
+}
+
+.contact{
+    max-width: 900px;
+    margin: 60px auto 100px;
+    padding: 0 20px;
+    form{
+        padding: 10px 0;
+        .col(11);
+        .name{
+            float: left;
+            display: inline;
+            width: 48%;
+            margin-right: 2%;
+        }
+        .surname{
+            float: left;
+            display: inline;
+            width: 48%;
+            margin-left: 2%;
+        }
+        .name, .surname{
+            input[type="text"]{
+                width: 92%;
+                padding: 8px 4%;
+            }
+        }
+        input[type="text"], input[type="email"]{
+            border: 1px solid #dddddd;
+            background: #fafafa;
+            width: 96%;
+            padding: 8px 2%;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            font-family: @font;
+            color: @black;
+            font-size: 16px;
+            -webkit-appearance: none;
+            &:focus{
+                background: white;
+            }
+        }
+        textarea{
+            border: 1px solid #dddddd;
+            background: #fafafa;
+            width: 96%;
+            padding: 8px 2%;
+            margin-bottom: 20px;
+            resize: vertical;
+            min-height: 100px;
+            transition: all 0.3s ease;
+            font-family: @font;
+            color: @black;
+            -webkit-appearance: none;
+            font-size: 16px;
+            &:focus{
+                background: white;
+            }
+        }
+        input[type="submit"]{
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 14px;
+            text-decoration: none;
+            color: @black;
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            letter-spacing: 2px;
+            background: none;
+            border: 1px solid @black;
+            transition: all 0.3s ease;
+            float: right;
+            &:hover{
+                background: @black;
+                color: white;
+            }
+        }
+        .clear;
+    }
+    article{
+        .col(5);
+        h3{
+            font-weight: 300;
+            font-size: 24px;
+            margin: 10px 0 20px 0;
+        }
+        a{
+            color: @black;
+            text-decoration: underline;
+        }
+    }
+    .clear;
+}
+
 footer{
     background: @black;
     padding: 50px 30px;
@@ -675,6 +773,18 @@ footer{
         background: white;
         .text{
             padding-bottom: 0;
+        }
+    }
+    .map{
+        height: 200px;
+    }
+    .contact{
+        form, article{
+            .col(16);
+        }
+        article{
+            text-align: center;
+            padding-bottom: 20px;
         }
     }
     footer{
