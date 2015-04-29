@@ -639,6 +639,26 @@ header{
     .clear;
 }
 
+.container .anim {
+    animation-duration: 0.3s;
+    transition-timing-function: ease-in;
+    animation-fill-mode: both;
+}
+
+.container .fade {
+  animation-name: fadeIn;
+}
+
+.container.is-exiting .anim {
+  -webkit-animation-direction: alternate-reverse;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 footer{
     background: @black;
     padding: 50px 30px;
@@ -805,6 +825,10 @@ footer{
     }
 }
 @media only screen and (max-width: 600px) {
+    .content .intro-text h2{
+        font-size: 22px;
+        line-height: 30px;
+    }
     .grid{
         .project{
             width: 100%;

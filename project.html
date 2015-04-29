@@ -22,7 +22,7 @@
     <meta name="msapplication-TileColor" content="#111111" />
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="main">
         <header>
             <a href="index.html" class="logo">Acme Studio</a>
             <div class="toggle"></div>
@@ -34,60 +34,63 @@
                 <a href="contact.html">Contact</a>
             </nav>
         </header>
-        <div class="project-slider">
-            <figure>
-                <img src="images/003.jpg">
-            </figure>
-            <figure>
-                <img src="images/005.jpg">
-            </figure>
-        </div>
-        <div class="content">
-            <div class="intro-text">
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum quam eu erat accumsan ornare. Ut interdum massa ut auctor venenatis.</h2>
+        <div class="anim fade">
+            <div class="project-slider">
+                <figure>
+                    <img src="images/003.jpg">
+                </figure>
+                <figure>
+                    <img src="images/005.jpg">
+                </figure>
             </div>
-            <div class="main">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat egestas congue. Vivamus nec sagittis velit. Phasellus in magna mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel fringilla ex. Suspendisse quam est, bibendum non pulvinar sed, efficitur ut dui. Suspendisse sed arcu mi. Suspendisse viverra ultrices orci, eu pellentesque diam dapibus finibus. Donec tellus lorem, volutpat vitae porta non, euismod at odio. Integer sed sagittis mi, ut malesuada justo. Sed vel bibendum leo. Aliquam egestas sapien ut lorem dictum, vel facilisis libero bibendum.</p>
-                <p>Praesent id finibus ipsum. Fusce pellentesque tellus non elementum consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mollis tristique laoreet. Donec sit amet nunc nec est commodo efficitur. Nam aliquam velit vel metus aliquet, a pharetra tortor finibus. Ut at porttitor lacus. In sodales sit amet erat tempus finibus. Maecenas et neque quis ex venenatis sollicitudin.</p>
-                <p>Vivamus tempus mi vitae lorem rutrum, interdum eleifend lacus imperdiet. Nulla pretium augue ac elit gravida, ut lacinia lectus mattis. Suspendisse vel tincidunt purus. Aenean faucibus felis id justo ultricies euismod et ac leo. Nullam sit amet felis in nibh fringilla accumsan quis laoreet ex. Proin in rhoncus purus. Cras ac lorem non elit finibus porta. Nam id diam ex. Vivamus a felis laoreet, volutpat eros ut, vulputate erat. Donec cursus est quis tortor suscipit, scelerisque porta dui viverra. Phasellus at venenatis nunc, nec maximus magna. Nam volutpat metus eget purus aliquam varius. Pellentesque laoreet lacus ut condimentum varius. Integer ac arcu justo. Vivamus dignissim mauris eu ligula efficitur, ac ullamcorper quam consectetur. Quisque neque mi, pretium vel ante vitae, interdum fringilla mi.</p>
-                <p>Nunc blandit laoreet sapien a auctor. Phasellus mattis et ante et maximus. Vivamus pharetra neque in efficitur molestie. Nulla tincidunt quis tellus a rhoncus. Ut auctor justo id semper suscipit. In tortor mi, blandit sit amet magna at, pretium aliquam tortor. Nulla rhoncus id lectus euismod imperdiet. Phasellus rhoncus volutpat consectetur. Aenean luctus ligula et convallis laoreet. Fusce luctus dictum magna non sagittis. Nulla facilisis a augue ut viverra. Quisque eu elit gravida odio interdum fringilla. Proin vulputate neque vel erat vulputate, at scelerisque lacus eleifend.</p>
-            </div>
-            <div class="side">
-                <a href="#" class="link">Visit the website</a>
-                <p>Created on 23.04.'15</p>
-                <menu>
-                    <a href="project.html">prev</a>
-                    <a href="project.html">Next</a>
-                </menu>
-            </div>
-        </div>
-        <footer>
-            <div class="sitemap">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="end">
-                <menu>
-                    <a href="http://facebook.com">Facebook</a>
-                    <a href="http://twitter.com">twitter</a>
-                    <a href="http://linkedin.com">LinkedIn</a>
-                    <a href="http://instagram.com">Instagram</a>
-                </menu>
-                <div class="copy">
-                    &copy; ACME STUDIO - 2015<br />
-                    website by <a href="http://www.tijngoessaert.be/" target="_blank">TIJN</a>
+            <div class="content">
+                <div class="intro-text">
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum quam eu erat accumsan ornare. Ut interdum massa ut auctor venenatis.</h2>
+                </div>
+                <div class="main">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat egestas congue. Vivamus nec sagittis velit. Phasellus in magna mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel fringilla ex. Suspendisse quam est, bibendum non pulvinar sed, efficitur ut dui. Suspendisse sed arcu mi. Suspendisse viverra ultrices orci, eu pellentesque diam dapibus finibus. Donec tellus lorem, volutpat vitae porta non, euismod at odio. Integer sed sagittis mi, ut malesuada justo. Sed vel bibendum leo. Aliquam egestas sapien ut lorem dictum, vel facilisis libero bibendum.</p>
+                    <p>Praesent id finibus ipsum. Fusce pellentesque tellus non elementum consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mollis tristique laoreet. Donec sit amet nunc nec est commodo efficitur. Nam aliquam velit vel metus aliquet, a pharetra tortor finibus. Ut at porttitor lacus. In sodales sit amet erat tempus finibus. Maecenas et neque quis ex venenatis sollicitudin.</p>
+                    <p>Vivamus tempus mi vitae lorem rutrum, interdum eleifend lacus imperdiet. Nulla pretium augue ac elit gravida, ut lacinia lectus mattis. Suspendisse vel tincidunt purus. Aenean faucibus felis id justo ultricies euismod et ac leo. Nullam sit amet felis in nibh fringilla accumsan quis laoreet ex. Proin in rhoncus purus. Cras ac lorem non elit finibus porta. Nam id diam ex. Vivamus a felis laoreet, volutpat eros ut, vulputate erat. Donec cursus est quis tortor suscipit, scelerisque porta dui viverra. Phasellus at venenatis nunc, nec maximus magna. Nam volutpat metus eget purus aliquam varius. Pellentesque laoreet lacus ut condimentum varius. Integer ac arcu justo. Vivamus dignissim mauris eu ligula efficitur, ac ullamcorper quam consectetur. Quisque neque mi, pretium vel ante vitae, interdum fringilla mi.</p>
+                    <p>Nunc blandit laoreet sapien a auctor. Phasellus mattis et ante et maximus. Vivamus pharetra neque in efficitur molestie. Nulla tincidunt quis tellus a rhoncus. Ut auctor justo id semper suscipit. In tortor mi, blandit sit amet magna at, pretium aliquam tortor. Nulla rhoncus id lectus euismod imperdiet. Phasellus rhoncus volutpat consectetur. Aenean luctus ligula et convallis laoreet. Fusce luctus dictum magna non sagittis. Nulla facilisis a augue ut viverra. Quisque eu elit gravida odio interdum fringilla. Proin vulputate neque vel erat vulputate, at scelerisque lacus eleifend.</p>
+                </div>
+                <div class="side">
+                    <a href="#" class="link">Visit the website</a>
+                    <p>Created on 23.04.'15</p>
+                    <menu>
+                        <a href="project.html">prev</a>
+                        <a href="project.html">Next</a>
+                    </menu>
                 </div>
             </div>
-        </footer>
+            <footer>
+                <div class="sitemap">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="end">
+                    <menu>
+                        <a href="http://facebook.com">Facebook</a>
+                        <a href="http://twitter.com">twitter</a>
+                        <a href="http://linkedin.com">LinkedIn</a>
+                        <a href="http://instagram.com">Instagram</a>
+                    </menu>
+                    <div class="copy">
+                        &copy; ACME STUDIO - 2015<br />
+                        website by <a href="http://www.tijngoessaert.be/" target="_blank">TIJN</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
     
     <!-- ============= JS ============= -->
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>  
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 	<script src="js/min/plugins.min.js" type="text/javascript"></script>
 	<script src="js/min/scripts.min.js" type="text/javascript"></script>
 </body>

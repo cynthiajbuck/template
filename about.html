@@ -22,7 +22,7 @@
     <meta name="msapplication-TileColor" content="#111111" />
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="main">
         <header>
             <a href="index.html" class="logo">Acme Studio</a>
             <div class="toggle"></div>
@@ -34,54 +34,57 @@
                 <a href="contact.html">Contact</a>
             </nav>
         </header>
-        <div class="about-slider owl-carousel">
-            <figure>
-                <img src="images/001.jpg">
-            </figure>
-            <figure>
-                <img src="images/002.jpg">
-            </figure>
-            <figure>
-                <img src="images/003.jpg">
-            </figure>
-        </div>
-        <div class="content">
-            <div class="about-side">
-                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum quam eu erat accumsan ornare. Ut interdum massa ut auctor venenatis.</h2>
+        <div class="anim fade">
+            <div class="about-slider owl-carousel">
+                <figure>
+                    <img src="images/001.jpg">
+                </figure>
+                <figure>
+                    <img src="images/002.jpg">
+                </figure>
+                <figure>
+                    <img src="images/003.jpg">
+                </figure>
             </div>
-            <div class="about-text">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus consequat sollicitudin. Duis eget porttitor dui, tempus molestie massa. Quisque ullamcorper nec massa nec vehicula. Vivamus auctor est at lacus tristique tristique. Etiam vestibulum enim vel nunc consectetur, quis consectetur lectus mattis. Proin tristique interdum gravida. Nam porttitor, risus at euismod sagittis, diam leo ultrices purus, eu egestas ipsum justo ac ante. Etiam bibendum elit vel nulla tempor, quis lobortis sapien tristique. Sed porta lobortis sapien nec congue. Donec quis ipsum non felis eleifend mattis nec vitae tortor. Donec placerat egestas nunc tempor commodo. Cras suscipit elementum ligula, id sollicitudin enim convallis eu. Maecenas gravida, velit in hendrerit euismod, turpis leo malesuada erat, ut faucibus ipsum lacus nec lacus. Sed sagittis turpis vel augue cursus rutrum.</p>
-                <p>Praesent nec arcu justo. Fusce ex odio, imperdiet et consequat at, mattis id mi. Aenean et eros sed purus tristique aliquam in ut purus. Suspendisse interdum nec justo at suscipit. Suspendisse ullamcorper tellus nibh. Aliquam libero nisi, congue sed est ut, pharetra finibus arcu. Etiam ipsum sem, volutpat a eleifend sit amet, aliquet sed est. Praesent eu leo quis ante efficitur pellentesque. Etiam nec consectetur massa. Donec ut erat non ex sagittis tincidunt quis nec ante. Donec in mauris sit amet nulla hendrerit finibus non sed elit.</p>
-                <p>Vestibulum semper blandit lectus eu ornare. Fusce dui ante, tempor ac lacus non, lobortis lobortis metus. Integer iaculis, augue a vehicula tincidunt, ligula ipsum egestas massa, vel tempus neque ex a ex. Aenean nisi enim, egestas ac lorem nec, facilisis hendrerit turpis. Etiam mattis libero ut odio faucibus pellentesque vel vel leo. Ut auctor tincidunt augue, nec feugiat nibh egestas id. Sed accumsan enim vitae risus finibus, sit amet vestibulum dui imperdiet. Curabitur vitae dapibus neque. Nunc eleifend ex quam, vel consectetur libero lacinia nec.</p>
-            </div>
-        </div>
-        <footer>
-            <div class="sitemap">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="end">
-                <menu>
-                    <a href="http://facebook.com">Facebook</a>
-                    <a href="http://twitter.com">twitter</a>
-                    <a href="http://linkedin.com">LinkedIn</a>
-                    <a href="http://instagram.com">Instagram</a>
-                </menu>
-                <div class="copy">
-                    &copy; ACME STUDIO - 2015<br />
-                    website by <a href="http://www.tijngoessaert.be/" target="_blank">TIJN</a>
+            <div class="content">
+                <div class="about-side">
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer condimentum quam eu erat accumsan ornare. Ut interdum massa ut auctor venenatis.</h2>
+                </div>
+                <div class="about-text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin finibus consequat sollicitudin. Duis eget porttitor dui, tempus molestie massa. Quisque ullamcorper nec massa nec vehicula. Vivamus auctor est at lacus tristique tristique. Etiam vestibulum enim vel nunc consectetur, quis consectetur lectus mattis. Proin tristique interdum gravida. Nam porttitor, risus at euismod sagittis, diam leo ultrices purus, eu egestas ipsum justo ac ante. Etiam bibendum elit vel nulla tempor, quis lobortis sapien tristique. Sed porta lobortis sapien nec congue. Donec quis ipsum non felis eleifend mattis nec vitae tortor. Donec placerat egestas nunc tempor commodo. Cras suscipit elementum ligula, id sollicitudin enim convallis eu. Maecenas gravida, velit in hendrerit euismod, turpis leo malesuada erat, ut faucibus ipsum lacus nec lacus. Sed sagittis turpis vel augue cursus rutrum.</p>
+                    <p>Praesent nec arcu justo. Fusce ex odio, imperdiet et consequat at, mattis id mi. Aenean et eros sed purus tristique aliquam in ut purus. Suspendisse interdum nec justo at suscipit. Suspendisse ullamcorper tellus nibh. Aliquam libero nisi, congue sed est ut, pharetra finibus arcu. Etiam ipsum sem, volutpat a eleifend sit amet, aliquet sed est. Praesent eu leo quis ante efficitur pellentesque. Etiam nec consectetur massa. Donec ut erat non ex sagittis tincidunt quis nec ante. Donec in mauris sit amet nulla hendrerit finibus non sed elit.</p>
+                    <p>Vestibulum semper blandit lectus eu ornare. Fusce dui ante, tempor ac lacus non, lobortis lobortis metus. Integer iaculis, augue a vehicula tincidunt, ligula ipsum egestas massa, vel tempus neque ex a ex. Aenean nisi enim, egestas ac lorem nec, facilisis hendrerit turpis. Etiam mattis libero ut odio faucibus pellentesque vel vel leo. Ut auctor tincidunt augue, nec feugiat nibh egestas id. Sed accumsan enim vitae risus finibus, sit amet vestibulum dui imperdiet. Curabitur vitae dapibus neque. Nunc eleifend ex quam, vel consectetur libero lacinia nec.</p>
                 </div>
             </div>
-        </footer>
+            <footer>
+                <div class="sitemap">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="end">
+                    <menu>
+                        <a href="http://facebook.com">Facebook</a>
+                        <a href="http://twitter.com">twitter</a>
+                        <a href="http://linkedin.com">LinkedIn</a>
+                        <a href="http://instagram.com">Instagram</a>
+                    </menu>
+                    <div class="copy">
+                        &copy; ACME STUDIO - 2015<br />
+                        website by <a href="http://www.tijngoessaert.be/" target="_blank">TIJN</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
     
     <!-- ============= JS ============= -->
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>  
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 	<script src="js/min/plugins.min.js" type="text/javascript"></script>
 	<script src="js/min/scripts.min.js" type="text/javascript"></script>
 </body>
